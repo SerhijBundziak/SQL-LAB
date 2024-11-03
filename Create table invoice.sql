@@ -21,6 +21,7 @@ ALTER TABLE orders DROP amount;
 ALTER TABLE orders DROP customer_id;
 ALTER TABLE orders DROP employee_id;
 
+
 -- Modify column
 ALTER TABLE customer MODIFY phone_number BIGINT(15) NOT NULL;
 ALTER TABLE employee MODIFY position VARCHAR(30) NOT NULL;
@@ -28,6 +29,8 @@ ALTER TABLE employee MODIFY position VARCHAR(30) NOT NULL;
 -- Modify department
 ALTER TABLE department MODIFY street varchar(50) NOT NULL;
 ALTER TABLE department MODIFY building_no INT(4);
+ALTER TABLE employee MODIFY first_name varchar(30);
+ALTER TABLE customer MODIFY birth_date DATE;
 
 -- Primary key 
 ALTER TABLE invoice ADD PRIMARY KEY (invoice_id);
@@ -37,6 +40,7 @@ ALTER TABLE orders DROP FOREIGN KEY orders_fk1;
 ALTER TABLE orders DROP FOREIGN KEY orders_fk3;
 ALTER TABLE orders ADD CONSTRAINT orders_fk2 FOREIGN KEY (product_id) REFERENCES product(product_id);
 ALTER TABLE invoice ADD CONSTRAINT invoice_fk0 FOREIGN KEY (employee_id) REFERENCES employee(employee_id);
+ALTER TABLE orders ADD CONSTRAINT orders_fk10 FOREIGN KEY (invoice_id) REFERENCES invoice(invoice_id);
 ALTER TABLE invoice ADD CONSTRAINT invoice_fk1 FOREIGN KEY (customer_id) REFERENCES customer(customer_id);
  
  
